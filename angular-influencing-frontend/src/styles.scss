@@ -1,0 +1,128 @@
+html {
+  overflow-x: hidden;
+}
+
+.active{
+  color: mediumaquamarine !important;
+}
+
+/* PRIME NG CSS */
+
+body .ui-button {
+
+  background-color: mediumaquamarine !important;
+  border: 1px solid mediumaquamarine !important;
+
+}
+
+body .ui-button :hover {
+
+  background-color: mediumaquamarine;
+  border: 1px solid mediumaquamarine;
+
+}
+
+/* PAGINATOR */
+body .ui-paginator .ui-paginator-pages .ui-paginator-page.ui-state-active {
+  background-color: mediumaquamarine;
+  color: #ffffff;
+}
+
+body .ui-paginator .ui-paginator-pages .ui-paginator-page:focus {
+  outline: 0 none;
+  outline-offset: 0;
+  box-shadow: none;
+}
+/* PAGINATOR */
+
+/* DATAVIEW TABLE */
+body .ui-dataview .ui-dataview-content {
+  padding: 0 !important;
+  background-color: white;
+}
+
+.ui-paginator {
+  background-color: transparent !important;
+  border: 0 !important;
+  padding: 0;
+}
+.ui-dataview .ui-dataview-header {
+  border: none !important;
+  background: white !important;
+}
+
+.ui-dataview .ui-dataview-content {
+  border: none !important;
+}
+/* DATAVIEW TABLE */
+
+/* LIST BOX */
+body .ui-listbox .ui-listbox-header {
+  border: none !important;
+}
+
+.ui-listbox {
+  width: 100%;
+}
+.ui-listbox-list {
+  background-color: transparent !important;
+}
+/* LIST BOX */
+
+/* MULTISELECT */
+.ui-multiselect-panel .ui-multiselect-items-wrapper {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+/* MULTISELECT */
+
+/* PAGINATOR */
+
+/* DIALOG */
+body .ui-dialog .ui-dialog-content {
+  overflow: hidden;
+}
+/* DIALOG */
+
+/* CAROUSEL */
+.carousel-control-prev-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23aaa' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E") !important;
+}
+
+.carousel-control-next-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23aaa' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E") !important;
+}
+/* CAROUSEL */
+
+/* PRIME NG CSS */
+
+/* SCROLLBAR */
+/* width */
+::-webkit-scrollbar {
+  width: 3px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: white;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: black;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: black;
+}
+/* SCROLLBAR */
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
+
+.ui-listbox .ui-listbox-list-wrapper {
+  overflow-x: hidden !important;
+}

@@ -1,0 +1,60 @@
+<div class="container">
+  <div class="row justify-content-between">
+    <div class="col-lg-6 p-0 m-0" style="min-width: 300px;">
+      <ngb-carousel *ngIf="selectedProduct.images" [showNavigationArrows]="selectedProduct.images.length>1"
+        [showNavigationIndicators]="selectedProduct.images.length>1">
+        <ng-template  ngbSlide *ngFor="let image of selectedProduct.images">
+          <div class="picsum-img-wrapper d-flex justify-content-center bg-light border border-light" style="height: 500px;">
+            <img alt="Random slide" src={{image}}  style="max-height: 100%; max-width: 100%;"
+              onError="this.src='/assets/images/No_Photo_Available_clip_art_hight.png'">
+            <div *ngIf="selectedProduct.discount>0" class="badge-corner">
+              <span class="badge badge-danger">-{{selectedProduct.discount}}%</span>
+            </div>
+          </div>
+        </ng-template>
+      </ngb-carousel>
+    </div>
+    <div class="col-lg-6 align-self-center container px-0 px-lg-4 mt-1">
+      <div class="container justify-content-center">
+        <div class="row mb-lg-4">
+          <div class="col-12 pr-0">
+            <h3 class="text-center">{{selectedProduct.brand_name}}</h3>
+          </div>
+        </div>
+      </div>
+      <div class="container justify-content-end ">
+        <div class="row mb-1">
+          <div class="col-12 px-0">
+            <h4 class="text-left">Διαθέσιμα μεγέθη</h4>
+          </div>
+        </div>
+        <div class="row mb-2 mb-lg-4">
+          <div class="col-12 px-0">
+            <div class="row pl-3">
+              <div *ngFor="let size of selectedProduct.size" style="font-size: 11px;">
+                <span class="col border border-dark p-1 ml-1">{{size}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row justify-content-end mb-lg-4">
+        <div class="col-4 pr-0">
+          <h3 class="text-danger text-right">{{selectedProduct.price| currency:'EUR':true}}</h3>
+        </div>
+        <div class="col-4 pl-0">
+          <h3 *ngIf="selectedProduct.discount>0" class="card-text px-2 text-muted text-left"
+            style="text-decoration: line-through">|{{selectedProduct.full_price| currency:'EUR':true}}</h3>
+        </div>
+      </div>
+      <div class="container justify-content-end ">
+        <div class="row mb-4">
+          <div class="col-12 px-0">
+            <a href={{selectedProduct.tracking_url}} style="background-color: mediumaquamarine;"
+              class="col btn btn-sm"><i class="pi pi-shopping-cart"></i>&nbsp;Αγορά</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

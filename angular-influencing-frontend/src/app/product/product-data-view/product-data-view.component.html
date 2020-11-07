@@ -1,0 +1,102 @@
+<p-breadcrumb [model]="items" [home]="home"></p-breadcrumb>
+<div class="wrapper">
+  <!-- Sidebar  -->
+  <nav #sidebar id="sidebar">
+    <div class="all">
+      <div>
+        <div class="row d-flex justify-content-center">
+          <p-button id="sidebarCollapse" icon="pi pi-refresh" class="d-lg-none" label=" Αναζήτηση"
+            (onClick)="onFilterSelection()">
+          </p-button>
+        </div>
+        <div class="row d-flex justify-content-center">
+          <p-button icon="pi pi-refresh" class="d-none d-lg-block" label=" Αναζήτηση" (onClick)="onFilterSelection()">
+          </p-button>
+        </div>
+        <ul class="list-unstyled components">
+          <li class="p-0 border radius" style="background-color: white;">
+            <h6 class="text-left m-0 pt-2 pb-1 pl-2 border-bottom">Μάρκες</h6>
+            <p-listbox [options]="brands" [(ngModel)]="selectedBrands" [multiple]="true" [checkbox]="true"
+              [filter]="true" [styleClass]="'border-0'" [listStyle]="{'max-height':'250px'}">
+              <ng-template let-brand pTemplate="item">
+                <span>{{brand.value}}</span>
+              </ng-template>
+            </p-listbox>
+            <button pButton type="button" label="Εκκαθάριση" (click)="clearSelectedBrands()"></button>
+          </li>
+          <li class="p-0 border radius" style="background-color: white;">
+            <h6 class="text-left m-0 pt-2 pb-1 pl-2 border-bottom">Χρώματα</h6>
+            <p-listbox [options]="colours" [(ngModel)]="selectedColours" [multiple]="true" [checkbox]="true"
+              [filter]="true" [styleClass]="'border-0'" [listStyle]="{'max-height':'250px'}">
+              <ng-template let-colour pTemplate="item">
+                <span>{{colour.value}}</span>
+              </ng-template>
+            </p-listbox>
+            <button pButton type="button" label="Εκκαθάριση" (click)="clearSelectedColours()"></button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- Sidebar  -->
+
+  <!-- Page Content  -->
+  <p-dataView #dv [value]="products" [paginator]="true" [rows]="20" [totalRecords]="totalRecords" [lazy]="true"
+    paginatorPosition="bottom" filterBy="brand" layout="grid" [sortField]="sortField" [sortOrder]="sortOrder"
+    [first]="position" (onPage)="onPagenation($event)" [emptyMessage]="'Δεν βρέθηκαν απολέσματα'"
+    filterBy="brand_name,price">
+    <p-header>
+      <div class="d-flex justify-content-between">
+        <p-button id="sidebarCollapse" icon="pi pi-sliders-v" class="d-lg-none ui-button-secondary" label="Φίλτρα"
+          (onClick)="onfiltersButton(sidebar)">
+        </p-button>
+        <p-dropdown #filterDropdown [options]="sortOptions" placeholder="Ταξινόμηση" (onChange)="onSortChange($event)"
+          [style]="{'min-width':'140px'}"></p-dropdown>
+      </div>
+    </p-header>
+    <ng-template let-product pTemplate="gridItem">
+      <div class="p-col-12 p-lg-5 p-xl-3" style="min-width: 300px;">
+        <ngb-carousel *ngIf="product.images" [showNavigationArrows]="product.images.length>1"
+          [showNavigationIndicators]="product.images.length>1">
+          <ng-template ngbSlide *ngFor="let image of product.images">
+            <div class="picsum-img-wrapper d-flex justify-content-center bg-light border border-light"
+              style="height: 500px;">
+              <img alt="Random slide" src={{image}} style="max-height: 100%; max-width: 100%;"
+                onError="this.src='/assets/images/No_Photo_Available_clip_art_hight.png'">
+              <div *ngIf="product.discount>0" class="badge-corner">
+                <span class="badge badge-danger">-{{product.discount}}%</span>
+              </div>
+            </div>
+          </ng-template>
+        </ngb-carousel>
+        <div class="card-body bg-light py-1 border border-top-0 rounded-bottom">
+          <div class="row m-1">
+            <h6 class="card-title m-0">{{product.brand_name}}</h6>
+          </div>
+          <div class="row pl-3">
+            <div *ngFor="let size of product.size" class="border border-dark p-1 m-1" style="font-size: 11px;">
+              {{size}}
+            </div>
+          </div>
+          <div class="row m-1">
+            <div class="col-12 pl-3">
+              <div class="row">
+                <p class="card-text text-danger">{{product.price | currency:'EUR':'symbol'}}</p>
+                <p *ngIf="product.discount>0" class="card-text px-2 text-muted" style="text-decoration: line-through">
+                  {{product.full_price | currency:'EUR':'symbol'}}</p>
+              </div>
+            </div>
+          </div>
+          <div class="row d-flex justify-content-between px-3 pb-2">
+            <a href={{product.tracking_url}} style="background-color: mediumaquamarine;" class="btn btn-sm"><i
+                class="pi pi-shopping-cart"></i>&nbsp;Αγορά</a>
+            <button type="button" class="btn btn-primary btn-sm" (click)="showProduct(product)"
+              style="margin-top:0">Λεπτομέριες</button>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </p-dataView>
+  <!-- Page Content  -->
+
+</div>

@@ -1,0 +1,61 @@
+a,
+a:hover,
+a:focus {
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+/* ---------------------------------------------------
+    BADGES
+----------------------------------------------------- */
+
+.badge-corner span {
+  position: absolute;
+  top: -52px;
+  font-size: 16px;
+  color: white;
+}
+.badge-corner {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-top: 66px solid transparent;
+  border-right: 66px solid transparent;
+  padding: 0;
+  border-radius: 0;
+}
+
+.image-fit{
+  max-height: 600px;
+}
+
+@media (max-width: 767px) {
+  h3{
+    font-size: 16px;
+  }
+
+  h4{
+    font-size: 12px;
+  }
+
+  .image-fit{
+    max-height: 400px;
+  }
+}
+
+@media (max-width: 360px) {
+  h3{
+    font-size: 16px;
+  }
+
+  h4{
+    font-size: 12px;
+  }
+
+  .image-fit{
+    max-height: 300px;
+  }
+}
