@@ -59,6 +59,8 @@ const routes: Routes = [
     }
   },
   { path: 'ανδρικα/παπουτσια/μοκασινια', component: ProductDataViewComponent, data: { url: 'ανδρικα/παπουτσια/μοκασινια' } },
+  
+  // Γυναικεία
   {
     path: 'γυναικεια', component: CategoriesComponent, data: {
       url: 'γυναικεια', label: 'Γυνακεία',
@@ -66,7 +68,8 @@ const routes: Routes = [
     },
     children: [
       { path: 'παπουτσια', component: CategoriesComponent, data: { url: 'γυναικεια/παπουτσια', label: 'Παπούτσια' } },
-      { path: 'ρουχα', component: CategoriesComponent, data: { url: 'γυναικεια/ρουχα', label: 'Ρούχα' } }
+      { path: 'ρουχα', component: CategoriesComponent, data: { url: 'γυναικεια/ρουχα', label: 'Ρούχα' } },
+      { path: 'κοσμηματα', component: CategoriesComponent, data: { url: 'γυναικεια/κοσμηματα', label: 'Κοσμήματα' } }
     ]
   },
 
@@ -219,6 +222,21 @@ const routes: Routes = [
     }
   },
   // Γυναικεία Παππούτσια
+
+  //Γυναικεία Κοσμήματα
+  {
+    path: 'γυναικεια/κοσμηματα/κολιε', component: ProductDataViewComponent, data: {
+      url: 'γυναικεια/κοσμηματα/κολιε',
+      items: [{ label: 'Γυναικεία', url: 'γυναικεια' }, { label: 'Κοσμήματα', url: 'γυναικεια/κοσμηματα' }, { label: 'Κολιέ', url: 'γυναικεια/κοσμηματα/κολιε' }]
+    }
+  },
+  {
+    path: 'γυναικεια/κοσμηματα/τσοκερ', component: ProductDataViewComponent, data: {
+      url: 'γυναικεια/κοσμηματα/τσοκερ',
+      items: [{ label: 'Γυναικεία', url: 'γυναικεια' }, { label: 'Κοσμήματα', url: 'γυναικεια/κοσμηματα' }, { label: 'Τσόκερ', url: 'γυναικεια/κοσμηματα/τσοκερ' }]
+    }
+  },
+
 
   { path: 'παιδικα', component: CategoriesComponent, data: { gender: 'παιδικα' } }
 ];

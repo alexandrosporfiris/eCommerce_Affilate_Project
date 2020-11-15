@@ -15,6 +15,7 @@ export class Categories {
     // Main Categories Constants
     private MAIN_CATEGORY_CLOTHES = 'ρουχα';
     private MAIN_CATEGORY_SHOES = 'παπουτσια';
+    private MAIN_CATEGORY_JEWELS = 'κοσμηματα';
 
     // Categories Constants
 
@@ -45,6 +46,11 @@ export class Categories {
     private CATEGORY_OXFORD = 'oxford';
     private CATEGORY_GALOTSES = 'γαλοτσες';
     private CATEGORY_PANTOFLES = 'παντοφλες';
+
+    //Κοσμήματα
+    private CATEGORY_KOLIE = 'κολιε';
+    private CATEGORY_TSOKER = 'τσοκερ';
+
 
     public genders: Possibility[] = [
         { possibleNames: ['ανδρικα', 'ανδρικο', 'ανδρικες'], value: this.GENDER_MALE },
@@ -86,6 +92,14 @@ export class Categories {
         { possibleNames: ['γαλοτσες', 'γαλοτσα'], value: this.CATEGORY_GALOTSES, mainCategory: this.MAIN_CATEGORY_SHOES },
         { possibleNames: ['παντοφλες', 'παντοφλα'], value: this.CATEGORY_PANTOFLES, mainCategory: this.MAIN_CATEGORY_SHOES },
         // Γυναικεία Παππούτσια
+
+        // Γυναικεία Κοσμήματα
+        { possibleNames: ['κολιε'], value: this.CATEGORY_KOLIE, mainCategory: this.MAIN_CATEGORY_JEWELS },
+        { possibleNames: ['τσοκερ'], value: this.CATEGORY_TSOKER, mainCategory: this.MAIN_CATEGORY_JEWELS },
+
+
+
+
 
         // TODO: Add the rest
     ];
@@ -161,6 +175,12 @@ export class Categories {
         },
 
         // Category Φορέματα
+
+        //Κοσμήματα
+        {
+            possibleNames: ['χειροποιητο', 'χειροποιητα'],
+            value: 'χειροποιητο', mainCategory: this.MAIN_CATEGORY_JEWELS,
+        },
 
         // Κοινές
         {
