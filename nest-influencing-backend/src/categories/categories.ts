@@ -8,7 +8,7 @@ export class Categories {
     // TODO: Move all constants to a separate file
 
     // Gender Constants
-    public GENDER_FEMALE = 'γυναικεια1';
+    public GENDER_FEMALE = 'γυναικεια';
     public GENDER_MALE = 'ανδρικα';
     public GENDER_CHILD = 'παιδικα';
 
