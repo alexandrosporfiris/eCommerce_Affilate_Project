@@ -22,7 +22,6 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    // TODO: This logic will be revised (only for development and visual purpose)
-    this.searchbar.nativeElement.style.backgroundImage = 'url(/assets/images/gynaikeia/arxikh/search.webp)';
+
   }
 }

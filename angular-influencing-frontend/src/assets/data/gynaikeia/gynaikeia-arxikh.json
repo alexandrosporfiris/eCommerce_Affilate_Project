@@ -1,32 +1,17 @@
 [
   {
-    "image": "/assets/images/gynaikeia/arxikh/1.webp",
+    "image": "/assets/images/gynaikeia/arxikh/1.jpg",
     "headline": "Γυναικεία Pούχα",
-    "description": "γυναικεια/ρουχα"
+    "link": "γυναικεια/ρουχα"
   },
   {
-    "image": "/assets/images/gynaikeia/arxikh/2.webp",
+    "image": "/assets/images/gynaikeia/arxikh/2.jpg",
     "headline": "Γυναικεία Παπούτσια",
-    "description": "γυναικεια/παπουτσια"
+    "link": "γυναικεια/παπουτσια"
   },
   {
-    "image": "/assets/images/gynaikeia/arxikh/3.webp",
-    "headline": "Γυναικεία Παπούτσια",
-    "description": "γυναικεια/παπουτσια"
-  },
-  {
-    "image": "/assets/images/gynaikeia/arxikh/4.webp",
-    "headline": "Γυναικεία Παπούτσια",
-    "description": "γυναικεια/παπουτσια"
-  },
-  {
-    "image": "/assets/images/gynaikeia/arxikh/5.webp",
-    "headline": "Γυναικεία Παπούτσια",
-    "description": "γυναικεια/παπουτσια"
-  },
-  {
-    "image": "/assets/images/gynaikeia/arxikh/2.webp",
-    "headline": "Γυναικεία Παπούτσια",
-    "description": "γυναικεια/παπουτσια"
+    "image": "/assets/images/gynaikeia/arxikh/3.jpg",
+    "headline": "Γυναικεία Kοσμήματα",
+    "link": "γυναικεια/κοσμηματα"
   }
 ]

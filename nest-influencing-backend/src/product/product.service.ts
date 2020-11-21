@@ -50,7 +50,7 @@ export class ProductService {
 
   async makeSynchronousRequest(): Promise<any[]> {
     try {
-      const url = 'http://affiliate.linkwi.se/feeds/1.2/CD2068/programs-joined/columns-product_id,barcode,model_name,product_name,description,category,brand_name,tracking_url,thumb_url,image_url,in_stock,availability,on_sale,currency,price,full_price,discount,times_bought,size,colour,program_id,program_name,extra_images/catinc-0/catex-0/proginc-10777-279,13219-1981,12723-1626,310-222,12906-1852,12297-1269,11285-526,11450-612,12321-1361,12584-1472,12584-1485,11427-611,10632-237,77-1506,13076-1864,11593-815,11651-849,10959-783,11708-1464,12663-1906/progex-0/feed.json';
+      const url = 'http://affiliate.linkwi.se/feeds/1.2/CD2068/programs-joined/columns-product_id,product_name,description,category,brand_name,tracking_url,image_url,price,full_price,discount,size,colour,extra_images/catinc-0/catex-0/proginc-10777-279,13219-1981,12723-1626,12906-1852,12297-1269,11285-526,11450-612,12321-1361,10632-237,13076-1864,11593-815,11651-849,10959-783,11708-1464,12663-1906/progex-0/feed.json';
 
       let http_promise = this.get_All_API(url);
       let response_body = await http_promise;
@@ -66,6 +66,15 @@ export class ProductService {
 
   async get_And_Save_All_From_API_Service_New_Logic() {
     const products = await this.makeSynchronousRequest();
+    // const fs = require('fs')
+    // const jsonString = JSON.stringify(products);
+    // fs.writeFile('./productList.json', jsonString, err => {
+    //   if (err) {
+    //     console.log('Error writing file', err);
+    //   } else {
+    //     console.log('Successfully wrote file');
+    //   }
+    // })
     for (const product of products) {
       let newProduct = this.initNewProduct();
       // 1. Find the right gender

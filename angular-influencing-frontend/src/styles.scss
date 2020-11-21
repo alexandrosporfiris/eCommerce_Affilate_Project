@@ -1,9 +1,28 @@
 html {
+  background-color: #f1f1f1;
   overflow-x: hidden;
 }
 
-.active{
-  color: mediumaquamarine !important;
+div{
+  background-color: #f1f1f1;
+}
+
+body .ui-breadcrumb {
+  background-color: #f1f1f1;
+  border: unset;
+}
+
+.card-header {
+  background-color: #f1f1f1 !important;
+}
+
+body a {
+  color: black;
+}
+
+body a:hover {
+  color: black;
+  text-decoration: mediumaquamarine !important;
 }
 
 /* PRIME NG CSS */
@@ -48,7 +67,7 @@ body .ui-dataview .ui-dataview-content {
 }
 .ui-dataview .ui-dataview-header {
   border: none !important;
-  background: white !important;
+  background: #f1f1f1 !important;
 }
 
 .ui-dataview .ui-dataview-content {

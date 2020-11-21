@@ -1,3 +1,5 @@
+<app-header></app-header>
+<div>
 <p-breadcrumb [model]="items" [home]="home"></p-breadcrumb>
 <div class="wrapper">
   <!-- Sidebar  -->
@@ -17,7 +19,7 @@
           <li class="p-0 border radius" style="background-color: white;">
             <h6 class="text-left m-0 pt-2 pb-1 pl-2 border-bottom">Μάρκες</h6>
             <p-listbox [options]="brands" [(ngModel)]="selectedBrands" [multiple]="true" [checkbox]="true"
-              [filter]="true" [styleClass]="'border-0'" [listStyle]="{'max-height':'250px'}">
+              [filter]="true" [styleClass]="'border-0'" [listStyle]="{'max-height':'250px', 'background-color': 'white'}">
               <ng-template let-brand pTemplate="item">
                 <span>{{brand.value}}</span>
               </ng-template>
@@ -27,7 +29,7 @@
           <li class="p-0 border radius" style="background-color: white;">
             <h6 class="text-left m-0 pt-2 pb-1 pl-2 border-bottom">Χρώματα</h6>
             <p-listbox [options]="colours" [(ngModel)]="selectedColours" [multiple]="true" [checkbox]="true"
-              [filter]="true" [styleClass]="'border-0'" [listStyle]="{'max-height':'250px'}">
+              [filter]="true" [styleClass]="'border-0'" [listStyle]="{'max-height':'250px', 'background-color': 'white'}">
               <ng-template let-colour pTemplate="item">
                 <span>{{colour.value}}</span>
               </ng-template>
@@ -69,25 +71,25 @@
             </div>
           </ng-template>
         </ngb-carousel>
-        <div class="card-body bg-light py-1 border border-top-0 rounded-bottom">
-          <div class="row m-1">
+        <div class="card-body bg-light py-1 border border-top-0 rounded-bottom bg-light">
+          <div class="row m-1 bg-light">
             <h6 class="card-title m-0">{{product.brand_name}}</h6>
           </div>
-          <div class="row pl-3">
+          <div class="row pl-3 bg-light">
             <div *ngFor="let size of product.size" class="border border-dark p-1 m-1" style="font-size: 11px;">
               {{size}}
             </div>
           </div>
-          <div class="row m-1">
-            <div class="col-12 pl-3">
-              <div class="row">
+          <div class="row m-1 bg-light">
+            <div class="col-12 pl-3 bg-light">
+              <div class="row bg-light">
                 <p class="card-text text-danger">{{product.price | currency:'EUR':'symbol'}}</p>
                 <p *ngIf="product.discount>0" class="card-text px-2 text-muted" style="text-decoration: line-through">
                   {{product.full_price | currency:'EUR':'symbol'}}</p>
               </div>
             </div>
           </div>
-          <div class="row d-flex justify-content-between px-3 pb-2">
+          <div class="row d-flex justify-content-between px-3 pb-2 bg-light">
             <a href={{product.tracking_url}} style="background-color: mediumaquamarine;" class="btn btn-sm"><i
                 class="pi pi-shopping-cart"></i>&nbsp;Αγορά</a>
             <button type="button" class="btn btn-primary btn-sm" (click)="showProduct(product)"
@@ -98,5 +100,4 @@
     </ng-template>
   </p-dataView>
   <!-- Page Content  -->
-
 </div>

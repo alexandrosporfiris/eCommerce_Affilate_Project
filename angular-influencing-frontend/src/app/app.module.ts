@@ -29,20 +29,22 @@ import { NavbarComponent } from './navbar/navbar.component';
 import localeDe from '@angular/common/locales/de';
 import localeDeExtra from '@angular/common/locales/extra/de';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { HeaderComponent } from './header/header.component';
 
 registerLocaleData(localeDe, 'de-DE', localeDeExtra);
 
 
 
 @NgModule({
-  declarations: [
+  declarations: [	
     AppComponent,
     ProductDetailsComponent,
     ProductDataViewComponent,
     HomeComponent,
     CategoriesComponent,
     NavbarComponent,
-  ],
+      HeaderComponent
+   ],
   imports: [
     NgbModule,
     CommonModule,

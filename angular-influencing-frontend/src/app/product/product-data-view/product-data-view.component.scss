@@ -61,9 +61,21 @@ a:focus {
 
 .all{
   padding: 1px;
-    background: white;
     height: 100vh;
     padding: 10px;
+}
+
+#sidebar[_ngcontent-app-root-c139] ul.components[_ngcontent-app-root-c139] {
+  padding: 20px 0;
+  border-bottom: 0px solid white;
+}
+
+#sidebar[_ngcontent-app-root-c139] {
+  min-width: 255px;
+  max-width: 255px;
+ background: #f1f1f1;
+  color: black;
+  transition: all 0.3s;
 }
 
 #sidebar ul.components {

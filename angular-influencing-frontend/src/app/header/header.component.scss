@@ -1,0 +1,19 @@
+.searchbar {
+  width: 35vw
+}
+
+.logo{
+  width: 5vw;
+  height: 4vw;
+}
+
+@media (max-width: 767px) {
+  .searchbar {
+    width: 45vw
+  }
+
+  .logo{
+    width: 12vw;
+    height: 12vw;
+  }
+}
