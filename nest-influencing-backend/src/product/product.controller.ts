@@ -31,7 +31,13 @@ export class ProductController {
 
         console.log('request.params: ', request.params);
         console.log('request.query: ', request.query);
-        return this.productService.Get_Specific_Products_Service(request.params, request.query);
+        return this.productService.get_Specific_Products_Service(request.params, request.query);
+    }
+
+    @Get('/searchBar/:searchTerm')
+    find_One_Products_From_Search_Bar(@Param('searchTerm') searchTerm: string): Promise<IProduct> {
+        console.log(searchTerm);
+        return this.productService.getProductsFromSearchBar(searchTerm);
     }
 
     @Get('/:id')

@@ -25,6 +25,18 @@ body a:hover {
   text-decoration: mediumaquamarine !important;
 }
 
+.serchBarBorder{
+  border: 1px solid mediumaquamarine;
+}
+
+.serchBarBorder:focus{
+  border: 1px solid mediumaquamarine;
+  outline-color: mediumaquamarine;
+}
+
+input::-webkit-input-placeholder {
+  opacity: 0.5; /*Change the opacity between 0 and 1*/
+}
 /* PRIME NG CSS */
 
 body .ui-button {
@@ -144,4 +156,14 @@ body .ui-dialog .ui-dialog-content {
 
 .ui-listbox .ui-listbox-list-wrapper {
   overflow-x: hidden !important;
+}
+
+.container{
+  max-width:85%;
+}
+
+@media (max-width: 768px){
+  .container{
+    max-width:100%;
+  }
 }

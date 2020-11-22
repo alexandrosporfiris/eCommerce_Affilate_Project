@@ -4,6 +4,7 @@ import { Injectable, Logger } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { IProduct } from './product.model';
+import { json } from 'express';
 
 const axios = require('axios');
 
@@ -274,7 +275,13 @@ export class ProductService {
       .toLowerCase();
   }
 
-  async Get_Specific_Products_Service(categoryPath: any, queryParams: any): Promise<any> {
+  async remove_A_Product(id: string): Promise<IProduct> {
+    this.logger.log('Try to remove a product...');
+    const objectToBeDeleted = await this.productModel.findById(id).exec();
+    return await objectToBeDeleted.remove();
+  }
+
+  async get_Specific_Products_Service(categoryPath: any, queryParams: any): Promise<any> {
     console.log('New try to find specific products...');
 
     // categoryPath
@@ -297,16 +304,16 @@ export class ProductService {
       .limit(20)
       .skip(20 * + queryParams.page);
     const totalProducts: IProduct[] = await this.productModel.find({ $and: arrOfThingsToSearch });
-    const total = totalProducts.length;
+    const total = await this.productModel.find(searchQuery).countDocuments();
     const colours: string[] = [];
     const brands: string[] = [];
     totalProducts.forEach(product => { colours.push(product.colour), brands.push(product.brand_name); });
     return { products: foundProducts, total, colours: [...new Set(colours)], brands: [...new Set(brands)] };
   }
 
-  async remove_A_Product(id: string): Promise<IProduct> {
-    this.logger.log('Try to remove a product...');
-    const objectToBeDeleted = await this.productModel.findById(id).exec();
-    return await objectToBeDeleted.remove();
+  async getProductsFromSearchBar(searchTerm: string): Promise<any> {
+    const foundProducts = await this.productModel.find({ $text: { $search: searchTerm } });
+    return foundProducts;
   }
+
 }

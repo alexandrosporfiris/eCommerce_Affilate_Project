@@ -25,3 +25,17 @@ a img {
 .container {
   position: relative;
 }
+
+.image-large{
+  width:100%;
+  max-height: 700px;
+  max-width: 400px;
+}
+
+@media (max-width: 767px) {
+  .image-large{
+    width:100%;
+    max-height: unset;
+    max-width: unset;
+  }
+}

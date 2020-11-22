@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AppService } from '../app.service';
 
 @Component({
   selector: 'app-header',
@@ -6,10 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+  searchTerm: string;
 
-  constructor() { }
+  constructor(private appservice: AppService) { }
 
   ngOnInit() {
+  }
+
+  search() {
+    console.log(this.searchTerm);
+    this.appservice.getDataFromSearchBar(this.searchTerm).toPromise().then(data=> console.log(data));
   }
 
 }

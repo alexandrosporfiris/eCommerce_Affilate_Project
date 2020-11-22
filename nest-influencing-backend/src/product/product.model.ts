@@ -77,4 +77,13 @@ export const ProductSchema = new Schema<IProduct>({
     images: [
         String,
     ],
-});
+}).index({
+    product_name: 'text',
+    description: 'text',
+    category: 'text',
+    subcategory: 'text',
+    mainCategory: 'text',
+    gender: 'text',
+    brand_name: 'text',
+},
+);

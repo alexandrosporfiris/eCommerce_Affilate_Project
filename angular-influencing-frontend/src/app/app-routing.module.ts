@@ -23,7 +23,7 @@ const routes: Routes = [
   {
     path: 'αρχικη/ανδρικα', component: HomeComponent, data: {
       url: 'αρχικη/ανδρικα', label: 'Aνδρικά',
-      feed: '/assets/data/andrika/andrika-categories.json'
+      feed: '/assets/data/andrika/andrika-arxikh.json'
     }
   },
   {
@@ -59,7 +59,7 @@ const routes: Routes = [
     }
   },
   { path: 'ανδρικα/παπουτσια/μοκασινια', component: ProductDataViewComponent, data: { url: 'ανδρικα/παπουτσια/μοκασινια' } },
-  
+
   // Γυναικεία
   {
     path: 'γυναικεια', component: CategoriesComponent, data: {

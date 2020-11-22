@@ -5,10 +5,9 @@
     </div>
     <div #searchbar class="col-10 d-flex align-items-center justify-content-start">
       <div class="ui-inputgroup">
-        <input class="searchbar" type="text" pInputText placeholder="">
-        <button pButton type="button" icon="pi pi-refresh" label="Αναζήτηση" class="ui-button-warn"></button>
+        <input placeholder=" γράψε αυτό που ψάχνεις" class="rounded-left serchBarBorder searchbar" type="text" pInputText [(ngModel)] = "searchTerm">
+        <button pButton type="button" icon="pi pi-refresh" label="Αναζήτηση" class="ui-button-warn" (click) = "search()"></button>
       </div>
-
     </div>
   </div>
 </div>

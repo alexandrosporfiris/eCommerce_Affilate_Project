@@ -17,4 +17,9 @@ export class AppService {
     console.log(environment.BACKEND_API_URL + this.dataSourceUrl + endPoint, { params });
     return this.http.get<any>(environment.BACKEND_API_URL + this.dataSourceUrl + endPoint, { params });
   }
+
+  getDataFromSearchBar(searchTerm: string): Observable<any> {
+    console.log(environment.BACKEND_API_URL + this.dataSourceUrl);
+    return this.http.get<any>(environment.BACKEND_API_URL + '/api/searchBar/' + searchTerm);
+  }
 }
