@@ -1,5 +1,6 @@
+import { environment } from './../../../environments/environment.prod';
 import { ProductDetailsComponent } from './../product-details/product-details.component';
-import { AfterViewInit, Component, OnInit, ViewChild, ViewChildren } from '@angular/core';
+import { AfterViewInit, Component, HostListener, OnInit, ViewChildren } from '@angular/core';
 import { SelectItem } from 'primeng/api/selectitem';
 import { Product } from '../../../assets/intefaces/product';
 import { DialogService } from 'primeng/dynamicdialog';
@@ -23,9 +24,15 @@ export class ProductDataViewComponent implements OnInit, AfterViewInit {
 
   public items: MenuItem[] = [];
 
+  public loading = true;
+
+  public publicImages = environment.BACKEND_PUBLIC_IMAGES;
+
   products: Product[];
 
   catgories: SelectItem[] = [];
+
+  searchTerm: string;
 
   sizes: any[] = [];
 
@@ -82,6 +89,7 @@ export class ProductDataViewComponent implements OnInit, AfterViewInit {
         (data.brands.forEach(colour => this.brands.push({ label: colour, value: colour })));
         // Pagination position initialization
         (this.position = this.activatedroute.snapshot.queryParams.page ? this.activatedroute.snapshot.queryParams.page * 20 : 0);
+        this.loading = false;
       });
   }
 
@@ -101,6 +109,9 @@ export class ProductDataViewComponent implements OnInit, AfterViewInit {
         this.selectedColours = [this.activatedroute.snapshot.queryParams.colour];
       } else {
         this.selectedColours = this.activatedroute.snapshot.queryParams.colour;
+      }
+      if (this.activatedroute.snapshot.queryParams.searchTerm) {
+        this.searchTerm = this.activatedroute.snapshot.queryParams.searchTerm;
       }
 
     });
@@ -136,6 +147,7 @@ export class ProductDataViewComponent implements OnInit, AfterViewInit {
         colour: this.selectedColours,
         brand_name: this.selectedBrands,
         page: this.page,
+        searchTerm: this.searchTerm,
       },
     });
   }
@@ -147,6 +159,7 @@ export class ProductDataViewComponent implements OnInit, AfterViewInit {
         colour: this.selectedColours,
         brand_name: this.selectedBrands,
         page: this.page,
+        searchTerm: this.searchTerm,
       },
     });
   }
@@ -161,6 +174,11 @@ export class ProductDataViewComponent implements OnInit, AfterViewInit {
 
   clearSelectedColours() {
     this.selectedColours = [];
+  }
+
+  @HostListener('window:popstate', ['$event'])
+  onPopState() {
+    localStorage.setItem('backButtonPressed', 'true');
   }
 
   ngAfterViewInit() {

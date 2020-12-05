@@ -166,4 +166,12 @@ body .ui-dialog .ui-dialog-content {
   .container{
     max-width:100%;
   }
+  input::-webkit-input-placeholder {
+    font-size: 13px;
+    opacity: 0.5; /*Change the opacity between 0 and 1*/
+  }
+}
+
+.spinner-grow .text-info{
+  background-color: mediumaquamarine !important;
 }

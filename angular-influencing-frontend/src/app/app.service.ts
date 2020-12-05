@@ -10,16 +10,17 @@ export class AppService {
 
   constructor(private http: HttpClient) { }
 
+  public searchTerm: string;
+
   dataSourceUrl = '/api/product/';
 
   getData(endPoint: string, params?: any): Observable<any> {
     endPoint = encodeURI(endPoint);
-    console.log(environment.BACKEND_API_URL + this.dataSourceUrl + endPoint, { params });
     return this.http.get<any>(environment.BACKEND_API_URL + this.dataSourceUrl + endPoint, { params });
   }
 
-  getDataFromSearchBar(searchTerm: string): Observable<any> {
+  async getDataFromSearchBar(searchTerm: string): Promise<any> {
     console.log(environment.BACKEND_API_URL + this.dataSourceUrl);
-    return this.http.get<any>(environment.BACKEND_API_URL + '/api/searchBar/' + searchTerm);
+    return await this.http.get<any>(environment.BACKEND_API_URL + '/api/searchBar/' + searchTerm).toPromise();
   }
 }

@@ -24,6 +24,8 @@
     "@nestjs/core": "^6.7.2",
     "@nestjs/mongoose": "^7.0.1",
     "@nestjs/platform-express": "^6.7.2",
+    "base64-stream": "^1.0.0",
+    "hbs": "^4.1.1",
     "mongoose": "^5.9.16",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.0",

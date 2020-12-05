@@ -1,14 +1,23 @@
 <div>
   <app-header></app-header>
-  <div class="container px-0">
+  <div *ngIf="loading" class="d-flex align-items-center justify-content-center " style="height: 50vh;">
+    <div class="spinner-grow" style="background-color: mediumaquamarine;" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+  <div *ngIf="!loading" class="container px-0">
     <p-breadcrumb [model]="items" [home]="home"></p-breadcrumb>
     <div>
-      <p-dataView #dv [value]="categories" layout="grid" [emptyMessage]="'Δεν βρέθηκαν απολέσματα'">
+      <p-dataView #dv [value]="categoriesFound" layout="grid" [emptyMessage]="'Δεν βρέθηκαν απολέσματα'">
         <ng-template let-category pTemplate="gridItem">
-          <div class="p-col-6 p-lg-5 p-xl-3">
-            <a href="{{category.url}}">
+          <div id={{category.name}} class="p-col-6 p-lg-5 p-xl-2 d-flex align-items-center justify-content-center">
+            <a (click)="onSelection(category)">
               <div class="card">
-                <img src="{{category.image}}" class="card-img-top" style="max-height: 400px ;" alt="...">
+                <div class="picsum-img-wrapper d-flex justify-content-center bg-light border border-light"
+                  style="height: 300px;">
+                  <img alt="Random slide" (error)="imageError(category.name)" src="{{category.image}}"
+                    style="max-height: 300px; max-width: 100%;">
+                </div>
                 <div class="card-body text-center">
                   <h5 class="card-title m-0">{{category.name}}</h5>
                 </div>

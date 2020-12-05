@@ -1,5 +1,5 @@
 
-import { Controller, Get, Param, Body, Query, Req } from '@nestjs/common';
+import { Controller, Get, Param, Body, Query, Req, Res } from '@nestjs/common';
 import { ProductService } from './product.service';
 import { IProduct } from './product.model';
 import { Request } from 'express';
@@ -40,8 +40,13 @@ export class ProductController {
         return this.productService.getProductsFromSearchBar(searchTerm);
     }
 
-    @Get('/:id')
-    find_One_Product_By_Id_Controller(@Param('id') id: string): Promise<IProduct> {
-        return this.productService.find_One_Product_By_Id_Service(id);
+    // @Get('/:id')
+    // find_One_Product_By_Id_Controller(@Param('id') id: string): Promise<IProduct> {
+    //     return this.productService.find_One_Product_By_Id_Service(id);
+    // }
+
+    @Get('image/:imgId')
+    getProductImage(@Param('imgId') imgId, @Res() res) {
+        return res.sendFile(imgId, { root: 'public' });
     }
 }

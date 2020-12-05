@@ -1,7 +1,6 @@
 import { HomeService } from './home.service';
 import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { AppService } from '../app.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   templateUrl: './home.component.html',
@@ -14,7 +13,11 @@ export class HomeComponent implements OnInit, AfterViewInit {
   public feed: string;
   public items = [];
 
-  constructor(private homeService: HomeService, public activatedroute: ActivatedRoute, private appservice: AppService) { }
+  constructor(
+    private homeService: HomeService,
+    public activatedroute: ActivatedRoute,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
     this.activatedroute.data.subscribe((link) => {
@@ -24,8 +27,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 
   search() {
-    console.log(this.searchTerm);
-    this.appservice.getDataFromSearchBar(this.searchTerm).toPromise().then(data=> console.log(data));
+    this.router.navigateByUrl('/αναζητηση?searchTerm=' + this.searchTerm);
   }
 
   ngAfterViewInit() {

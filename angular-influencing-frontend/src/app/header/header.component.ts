@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AppService } from '../app.service';
+import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -7,16 +8,17 @@ import { AppService } from '../app.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+
   searchTerm: string;
 
-  constructor(private appservice: AppService) { }
+  constructor(private router: Router, public activatedroute: ActivatedRoute) { }
 
   ngOnInit() {
+    this.searchTerm = this.activatedroute.snapshot.queryParams.searchTerm;
   }
 
   search() {
-    console.log(this.searchTerm);
-    this.appservice.getDataFromSearchBar(this.searchTerm).toPromise().then(data=> console.log(data));
+    this.router.navigateByUrl('/αναζητηση?searchTerm=' + this.searchTerm);
   }
 
 }

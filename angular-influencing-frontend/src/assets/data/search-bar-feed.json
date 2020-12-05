@@ -1,0 +1,270 @@
+[
+  {
+    "image": "/assets/images/γυναικεια/arxikh/1.jpg",
+    "name": "Γυναικεία",
+    "gender": "γυναικεια",
+    "genderLabel": "Γυναικεία"
+  },
+  {
+    "image": "/assets/images/γυναικεια/ρουχα.jpg",
+    "name": "Γυναικεία Pούχα",
+    "url": "γυναικεια/ρουχα",
+    "gender": "γυναικεια",
+    "genderLabel": "Γυναικεία",
+    "mainCategory": "ρουχα"
+  },
+  {
+    "image": "/assets/images/γυναικεια/παπουτσια.jpg",
+    "name": "Γυναικεία Παπούτσια",
+    "url": "γυναικεια/παπουτσια",
+    "gender": "γυναικεια",
+    "genderLabel": "Γυναικεία",
+    "mainCategory": "παπουτσια"
+  },
+  {
+    "image": "/assets/images/γυναικεια/κοσμηματα.jpg",
+    "name": "Γυναικεία Κοσμήματα",
+    "url": "γυναικεια/κοσμηματα",
+    "gender": "γυναικεια",
+    "genderLabel": "Γυναικεία",
+    "mainCategory": "κοσμηματα"
+  },
+  {
+    "image": "/assets/images/γυναικεια/κοσμηματα.jpg",
+    "name": "Γυναικεία Αξεσουάρ",
+    "url": "γυναικεια/αξεσουαρ",
+    "gender": "γυναικεια",
+    "genderLabel": "Γυναικεία",
+    "mainCategory": "αξεσουαρ"
+  },
+  {
+    "image": "/assets/images/γυναικεια/ρουχα/μπλουζες.jpg",
+    "name": "Γυναικείες Μπλούζες",
+    "url": "γυναικεια/ρουχα/μπλουζες",
+    "mainCategory": "ρουχα",
+    "mainCategoryLabel": "Ρούχα",
+    "gender": "γυναικεια",
+    "genderLabel": "Γυναικεία",
+    "category": "μπλουζες"
+  },
+  {
+    "image": "/assets/images/γυναικεια/ρουχα/παντελονια.jpg",
+    "name": "Γυναικεία Παντελόνια",
+    "url": "γυναικεια/ρουχα/παντελονια",
+    "mainCategory": "ρουχα",
+    "mainCategoryLabel": "Ρούχα",
+    "gender": "γυναικεια",
+    "genderLabel": "Γυναικεία",
+    "category": "παντελονια"
+  },
+  {
+    "image": "/assets/images/γυναικεια/ρουχα/πανωφορια.jpg",
+    "name": "Γυναικεία Πανωφόρια",
+    "url": "γυναικεια/ρουχα/πανωφορια",
+    "mainCategory": "ρουχα",
+    "mainCategoryLabel": "Ρούχα",
+    "gender": "γυναικεια",
+    "genderLabel": "Γυναικεία",
+    "category": "πανωφορια"
+  },
+  {
+    "image": "/assets/images/γυναικεια/ρουχα/εσωρουχα.jpg",
+    "name": "Γυναικεία Εσώρουχα",
+    "url": "γυναικεια/ρουχα/εσωρουχα",
+    "mainCategory": "ρουχα",
+    "mainCategoryLabel": "Ρούχα",
+    "gender": "γυναικεια",
+    "genderLabel": "Γυναικεία",
+    "category": "εσωρουχα"
+  },
+  {
+    "image": "/assets/images/γυναικεια/ρουχα/μαγιο.jpg",
+    "name": "Γυναικεία Μαγιό",
+    "url": "γυναικεια/ρουχα/μαγιο",
+    "mainCategory": "ρουχα",
+    "mainCategoryLabel": "Ρούχα",
+    "gender": "γυναικεια",
+    "genderLabel": "Γυναικεία",
+    "category": "μαγιο"
+  },
+  {
+    "image": "/assets/images/γυναικεια/ρουχα/φουστες.jpg",
+    "name": "Γυναικείες Φούστες",
+    "url": "γυναικεια/ρουχα/φουστες",
+    "mainCategory": "ρουχα",
+    "mainCategoryLabel": "Ρούχα",
+    "gender": "γυναικεια",
+    "genderLabel": "Γυναικεία",
+    "category": "φουστες"
+  },
+  {
+    "image": "/assets/images/γυναικεια/ρουχα/αθλητικα.jpg",
+    "name": "Γυναικεία Αθλητικά",
+    "url": "γυναικεια/ρουχα/αθλητικα",
+    "mainCategory": "ρουχα",
+    "mainCategoryLabel": "Ρούχα",
+    "gender": "γυναικεια",
+    "genderLabel": "Γυναικεία",
+    "category": "αθλητικα"
+  },
+  {
+    "image": "/assets/images/γυναικεια/ρουχα/πουκαμισα.jpg",
+    "name": "Γυναικεία Πουκάμισα",
+    "url": "γυναικεια/ρουχα/πουκαμισα",
+    "mainCategory": "ρουχα",
+    "mainCategoryLabel": "Ρούχα",
+    "gender": "γυναικεια",
+    "genderLabel": "Γυναικεία",
+    "category": "πουκαμισα"
+  },
+  {
+    "image": "/assets/images/γυναικεια/ρουχα/φορμες.jpg",
+    "name": "Γυναικείες Φόρμες",
+    "url": "γυναικεια/ρουχα/φορμες",
+    "mainCategory": "ρουχα",
+    "mainCategoryLabel": "Ρούχα",
+    "gender": "γυναικεια",
+    "genderLabel": "Γυναικεία",
+    "category": "φορμες"
+  },
+  {
+    "image": "/assets/images/γυναικεια/ρουχα/ταγιερ.jpg",
+    "name": "Γυναικεία Ταγιέρ",
+    "url": "γυναικεια/ρουχα/ταγιερ",
+    "mainCategory": "ρουχα",
+    "mainCategoryLabel": "Ρούχα",
+    "gender": "γυναικεια",
+    "genderLabel": "Γυναικεία",
+    "category": "ταγιερ"
+  },
+  {
+    "image": "/assets/images/γυναικεια/παπουτσια/πεδιλα.jpg",
+    "name": "Γυναικεία Πέδιλα",
+    "url": "γυναικεια/παπουτσια/πεδιλα",
+    "mainCategory": "παπουτσια",
+    "mainCategoryLabel": "Παπούτσια",
+    "gender": "γυναικεια",
+    "genderLabel": "Γυναικεία",
+    "category": "πεδιλα"
+  },
+  {
+    "image": "/assets/images/γυναικεια/παπουτσια/μποτακια.jpg",
+    "name": "Γυναικεία Μποτάκια",
+    "url": "γυναικεια/παπουτσια/μποτακια",
+    "mainCategory": "παπουτσια",
+    "mainCategoryLabel": "Παπούτσια",
+    "gender": "γυναικεια",
+    "genderLabel": "Γυναικεία",
+    "category": "μποτακια"
+  },
+  {
+    "image": "/assets/images/γυναικεια/παπουτσια/αθλητικά.jpg",
+    "name": "Γυναικεία Αθλητικά",
+    "url": "γυναικεια/παπουτσια/αθλητικά",
+    "mainCategory": "παπουτσια",
+    "mainCategoryLabel": "Παπούτσια",
+    "gender": "γυναικεια",
+    "genderLabel": "Γυναικεία",
+    "category": "αθλητικά"
+  },
+  {
+    "image": "/assets/images/γυναικεια/παπουτσια/γοβες.jpg",
+    "name": "Γυναικείες Γόβες",
+    "url": "γυναικεια/παπουτσια/γοβες",
+    "mainCategory": "παπουτσια",
+    "mainCategoryLabel": "Παπούτσια",
+    "gender": "γυναικεια",
+    "genderLabel": "Γυναικεία",
+    "category": "γοβες"
+  },
+  {
+    "image": "/assets/images/γυναικεια/παπουτσια/σαγιοναρες.jpg",
+    "name": "Γυναικείες Σαγιονάρες",
+    "url": "γυναικεια/παπουτσια/σαγιοναρες",
+    "mainCategory": "παπουτσια",
+    "mainCategoryLabel": "Παπούτσια",
+    "gender": "γυναικεια",
+    "genderLabel": "Γυναικεία",
+    "category": "σαγιοναρες"
+  },
+  {
+    "image": "/assets/images/γυναικεια/γυναικεια/σανδαλια.jpg",
+    "name": "Γυναικεία Σανδάλια",
+    "url": "γυναικεια/παπουτσια/σανδαλια",
+    "mainCategory": "παπουτσια",
+    "mainCategoryLabel": "Παπούτσια",
+    "gender": "γυναικεια",
+    "genderLabel": "Γυναικεία",
+    "category": "σανδαλια"
+  },
+  {
+    "image": "/assets/images/γυναικεια/παπουτσια/μοκασινια.jpg",
+    "name": "Γυναικεία Μοκασίνια",
+    "url": "γυναικεια/παπουτσια/μοκασινια",
+    "mainCategory": "παπουτσια",
+    "mainCategoryLabel": "Παπούτσια",
+    "gender": "γυναικεια",
+    "genderLabel": "Γυναικεία",
+    "category": "μοκασινια"
+  },
+  {
+    "image": "/assets/images/γυναικεια/παπουτσια/εσπαντριγιες.jpg",
+    "name": "Γυναικείες Εσπαντρίγιες",
+    "url": "γυναικεια/παπουτσια/εσπαντριγιες",
+    "mainCategory": "παπουτσια",
+    "mainCategoryLabel": "Παπούτσια",
+    "gender": "γυναικεια",
+    "genderLabel": "Γυναικεία",
+    "category": "εσπαντριγιες"
+  },
+  {
+    "image": "/assets/images/γυναικεια/παπουτσια/τσοκαρα.jpg",
+    "name": "Γυναικεία Τσόκαρα",
+    "url": "γυναικεια/παπουτσια/τσοκαρα",
+    "mainCategory": "παπουτσια",
+    "mainCategoryLabel": "Παπούτσια",
+    "gender": "γυναικεια",
+    "genderLabel": "Γυναικεία",
+    "category": "τσοκαρα"
+  },
+  {
+    "image": "/assets/images/γυναικεια/παπουτσια/loafers.jpg",
+    "name": "Γυναικεία Loafers",
+    "url": "γυναικεια/παπουτσια/loafers",
+    "mainCategory": "παπουτσια",
+    "mainCategoryLabel": "Παπούτσια",
+    "gender": "γυναικεια",
+    "genderLabel": "Γυναικεία",
+    "category": "loafers"
+  },
+  {
+    "image": "/assets/images/γυναικεια/παπουτσια/oxford.jpg",
+    "name": "Γυναικεία Oxford",
+    "url": "γυναικεια/παπουτσια/oxford",
+    "mainCategory": "παπουτσια",
+    "mainCategoryLabel": "Παπούτσια",
+    "gender": "γυναικεια",
+    "genderLabel": "Γυναικεία",
+    "category": "oxford"
+  },
+  {
+    "image": "/assets/images/γυναικεια/παπουτσια/γαλοτσες.jpg",
+    "name": "Γυναικείες Γαλότσες",
+    "url": "γυναικεια/παπουτσια/γαλοτσες",
+    "mainCategory": "παπουτσια",
+    "mainCategoryLabel": "Παπούτσια",
+    "gender": "γυναικεια",
+    "genderLabel": "Γυναικεία",
+    "category": "γαλοτσες"
+  },
+  {
+    "image": "/assets/images/γυναικεια/παπουτσια/παντοφλες.jpg",
+    "name": "Γυναικείες Παντόφλες",
+    "url": "γυναικεια/παπουτσια/παντοφλες",
+    "mainCategory": "παπουτσια",
+    "mainCategoryLabel": "Παπούτσια",
+    "gender": "γυναικεια",
+    "genderLabel": "Γυναικεία",
+    "category": "παντοφλες"
+  }
+]

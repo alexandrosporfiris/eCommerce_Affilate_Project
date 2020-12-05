@@ -1,10 +1,10 @@
 import { Possibility } from 'src/general_intefaces/possibility';
 import { Categories } from '../categories/categories';
-import { Injectable, Logger } from '@nestjs/common';
+import { HttpService, Injectable, Logger } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { IProduct } from './product.model';
-import { json } from 'express';
+import { log } from 'console';
 
 const axios = require('axios');
 
@@ -19,6 +19,7 @@ export class ProductService {
   constructor(
     @InjectModel('Product')
     private readonly productModel: Model<IProduct>,
+    private readonly httpService: HttpService,
     private categories: Categories,
   ) { }
 
@@ -51,7 +52,7 @@ export class ProductService {
 
   async makeSynchronousRequest(): Promise<any[]> {
     try {
-      const url = 'http://affiliate.linkwi.se/feeds/1.2/CD2068/programs-joined/columns-product_id,product_name,description,category,brand_name,tracking_url,image_url,price,full_price,discount,size,colour,extra_images/catinc-0/catex-0/proginc-10777-279,13219-1981,12723-1626,12906-1852,12297-1269,11285-526,11450-612,12321-1361,10632-237,13076-1864,11593-815,11651-849,10959-783,11708-1464,12663-1906/progex-0/feed.json';
+      const url = 'http://affiliate.linkwi.se/feeds/1.2/CD2068/programs-joined/columns-product_id,barcode,model_name,product_name,description,category,brand_name,tracking_url,thumb_url,image_url,in_stock,availability,on_sale,currency,price,full_price,discount,times_bought,size,colour,program_id,program_name,extra_images/catinc-0/catex-0/proginc-10777-279,13219-1981,12723-1626,310-222,12906-1852,12297-1269,11285-526,11450-612,12321-1361,12584-1472,12584-1485,11427-611,10632-237,77-1506,13076-1864,11593-815,11651-849,10959-783,11708-1464,12663-1906/progex-0/feed.json';
 
       let http_promise = this.get_All_API(url);
       let response_body = await http_promise;
@@ -107,9 +108,11 @@ export class ProductService {
         // 5. Set the rest properties
         newProduct = this.setRemainingProperties(product, newProduct);
         const newElement = new this.productModel(newProduct);
-        newElement.save();
+        await newElement.save();
       }
     }
+    await this.updateCategoriesImages().then(() => { this.logger.log('erteksa'), this.getAllProductsAssignImages(); });
+
   }
 
   setRemainingProperties(product: any, newProduct: IProduct): IProduct {
@@ -156,7 +159,7 @@ export class ProductService {
       newProduct.tracking_url = product.tracking_url;
     }
     if (product.image_url !== undefined) {
-      newProduct.images.push(product.image_url);
+      newProduct.imagesUrls.push(product.image_url);
     }
     if (product.in_stock !== undefined) {
       newProduct.in_stock = product.in_stock;
@@ -171,9 +174,11 @@ export class ProductService {
     if (product.colour !== undefined) {
       newProduct.colour = product.colour;
     }
-    if (product.extra_images !== undefined) {
+    if (product.extra_images !== undefined && product.extra_images.length) {
       product.extra_images.forEach(extraImage => {
-        newProduct.images.push(extraImage.extra_image_url);
+        if (extraImage.extra_image_url !== undefined && extraImage.extra_image_url !== null) {
+          newProduct.imagesUrls.push(extraImage.extra_image_url);
+        }
       });
     }
     if (product.discount !== undefined) {
@@ -203,22 +208,26 @@ export class ProductService {
   }
 
   setPredefinedCategoryProperty(productFromApi: any, preDefindedCategoryList: Possibility[]): Possibility {
-    // 1.Check Category Property
     let preDefindedCategory = null;
-    if (productFromApi.category !== undefined) {
+    // 1. Check Product Name Property
+    if (productFromApi.product_name !== undefined) {
+      preDefindedCategory = this.searchAndMatch(productFromApi.product_name, preDefindedCategoryList);
+    }
+    // 2.Check Category Property
+    if (preDefindedCategory === null && productFromApi.category !== undefined) {
       preDefindedCategory = this.searchAndMatch(productFromApi.category, preDefindedCategoryList);
     }
-    // 2.Check Description Property
-    if (preDefindedCategory === null && productFromApi.description !== undefined) {
-      preDefindedCategory = this.searchAndMatch(productFromApi.description, preDefindedCategoryList);
-    }
-    // 3. Check Product Name Property
+    // 2. Check Product Name Property
     if (preDefindedCategory === null && productFromApi.product_name !== undefined) {
       preDefindedCategory = this.searchAndMatch(productFromApi.product_name, preDefindedCategoryList);
     }
     // 3. Check Product Name Property
     if (preDefindedCategory === null && productFromApi.brand_name !== undefined) {
       preDefindedCategory = this.searchAndMatch(productFromApi.brand_name, preDefindedCategoryList);
+    }
+    // 4.Check Description Property
+    if (preDefindedCategory === null && productFromApi.description !== undefined) {
+      preDefindedCategory = this.searchAndMatch(productFromApi.description, preDefindedCategoryList);
     }
     return preDefindedCategory;
   }
@@ -254,6 +263,7 @@ export class ProductService {
       full_price: null,
       discount: null,
       images: [],
+      imagesUrls: [],
       size: [],
       colour: null,
     } as IProduct;
@@ -283,9 +293,16 @@ export class ProductService {
 
   async get_Specific_Products_Service(categoryPath: any, queryParams: any): Promise<any> {
     console.log('New try to find specific products...');
+    console.log(queryParams);
 
     // categoryPath
-    const arrOfThingsToSearch = [{ mainCategory: categoryPath.category }, { gender: categoryPath.gender }, { category: categoryPath.subcategory }];
+    let arrOfThingsToSearch;
+    if (queryParams.searchTerm) {
+      arrOfThingsToSearch = [{ mainCategory: categoryPath.category }, { gender: categoryPath.gender }, { category: categoryPath.subcategory },
+      { $text: { $search: this.formatsearchTerm(queryParams.searchTerm) } }];
+    } else {
+      arrOfThingsToSearch = [{ mainCategory: categoryPath.category }, { gender: categoryPath.gender }, { category: categoryPath.subcategory }];
+    }
 
     const searchQuery: any = { $and: arrOfThingsToSearch };
     if (queryParams.brand_name && queryParams.brand_name.length > 0) {
@@ -312,8 +329,119 @@ export class ProductService {
   }
 
   async getProductsFromSearchBar(searchTerm: string): Promise<any> {
-    const foundProducts = await this.productModel.find({ $text: { $search: searchTerm } });
-    return foundProducts;
+    const genders: string[] = [];
+    const mainCategories: string[] = [];
+    const categories: string[] = [];
+    const foundProducts = await this.productModel.find({ $text: { $search: this.formatsearchTerm(searchTerm) } });
+    foundProducts.forEach(product => { genders.push(product.gender), mainCategories.push(product.mainCategory), categories.push(product.category); });
+    // tslint:disable-next-line: max-line-length
+    return { productsFound: foundProducts, genders: [...new Set(genders)], mainCategories: [...new Set(mainCategories)], categories: [... new Set(categories)] };
   }
 
+  formatsearchTerm(searchTerm: string): string {
+    let formatedsearchTerm = '';
+    searchTerm.split(' ')
+      .forEach(term => formatedsearchTerm = formatedsearchTerm + '"' + this.formatString(term) + '"');
+    return '\'' + formatedsearchTerm + '\'';
+  }
+
+  async saveProductImages(imageUrl, imageName): Promise<string> {
+    let type: string;
+    const fs = require('fs');
+    const https = require('https');
+    const dir = '../nest-influencing-backend/public';
+    await axios({
+      method: 'GET',
+      url: encodeURI(imageUrl),
+      responseType: 'stream',
+      timeout: 6000000,
+      httpsAgent: new https.Agent({ keepAlive: true }),
+    })
+      .then((response) => {
+        return new Promise((resolve) => {
+          response.data
+            .pipe(fs.createWriteStream(dir + '/' + imageName + '.' + response.headers['content-type'].split('/')[1]))
+            .on('finish', () => {
+              type = response.headers['content-type'].split('/')[1];
+              resolve();
+            });
+          response.data.on('uncaughtException', (error) => this.logger.log(error));
+          response.data.on('error', (error) => this.logger.log(error));
+        });
+      })
+      .catch((error) => this.logger.log(error));
+    return type;
+  }
+
+  async updateCategoriesImages() {
+    this.logger.log('trexw')
+    this.productModel.distinct('category', {}).then(async distictCatgories => {
+      distictCatgories.forEach(async distictCatgory => {
+        this.productModel.findOne({ category: distictCatgory }).then(async product => {
+          const fs = require('fs');
+          const https = require('https');
+          const dir = '../angular-influencing-frontend/src/assets/images/'
+            + product.gender + '/' + product.mainCategory;
+          if (!fs.existsSync(dir)) {
+            fs.mkdirSync(dir, { recursive: true });
+          }
+          await axios({
+            method: 'GET',
+            url: encodeURI(product.imagesUrls[0]),
+            responseType: 'stream',
+            timeout: 6000000,
+            httpsAgent: new https.Agent({ keepAlive: true }),
+          })
+            .then((response) => {
+              return new Promise((resolve) => {
+                response.data
+                  .pipe(fs.createWriteStream(dir + '/' + product.category + '.' + response.headers['content-type'].split('/')[1]))
+                  .on('finish', () => {
+                    resolve();
+                  });
+                response.data.on('uncaughtException', (error) => this.logger.log(error));
+                response.data.on('error', (error) => this.logger.log(error));
+              });
+            })
+            .catch((error) => {
+              this.logger.log(error);
+            });
+        });
+      });
+    });
+  }
+
+  async getAllProductsAssignImages() {
+    await this.productModel.find({}).then(foundProducts => {
+      foundProducts.forEach(async product => {
+        if (product.imagesUrls.length) {
+          let i = 0;
+          product.imagesUrls.forEach(async imageUrl => {
+            await this.saveProductImages(imageUrl, product.product_id.replace(/[^a-zA-Z0-9]+/g, '') + i).then(async type => {
+              if (type != null && type !== undefined && type !== 'html') {
+                product.images.push(product.product_id.replace(/[^a-zA-Z0-9]+/g, '') + i + '.' + type);
+                const index = product.imagesUrls.indexOf(imageUrl);
+                if (index > -1) {
+                  product.imagesUrls.splice(index, 1);
+                }
+                i = i + 1;
+                const filterImagesNonNull = product.images.filter(image => image !== null && image !== undefined);
+                const filterimagesUrlsNonNull = product.imagesUrls.filter(imageUrlf => imageUrlf !== null && imageUrlf !== undefined);
+                const indexNull = filterimagesUrlsNonNull.indexOf(null);
+                if (indexNull > -1) {
+                  filterImagesNonNull.splice(indexNull, 1);
+                }
+                const indexUrlNull = filterimagesUrlsNonNull.indexOf(null);
+                if (indexUrlNull > -1) {
+                  filterimagesUrlsNonNull.splice(indexNull, 1);
+                }
+                await this.productModel.updateOne({ product_id: product.product_id },
+                  { images: filterImagesNonNull, imagesUrls: filterimagesUrlsNonNull });
+              }
+            });
+          });
+        }
+      });
+    });
+  }
 }

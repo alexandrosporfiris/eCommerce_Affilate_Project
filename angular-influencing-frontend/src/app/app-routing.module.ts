@@ -16,7 +16,7 @@ const routes: Routes = [
   { path: 'αρχικη', redirectTo: 'αρχικη/γυναικεια', pathMatch: 'full' },
   {
     path: 'αρχικη/γυναικεια', component: HomeComponent, data: {
-      url: 'αρχικη/γυναικεια', label: 'Γυνακεία',
+      url: 'αρχικη/γυναικεια', label: 'Γυναικεία',
       feed: '/assets/data/gynaikeia/gynaikeia-arxikh.json'
     }
   },
@@ -63,12 +63,22 @@ const routes: Routes = [
   // Γυναικεία
   {
     path: 'γυναικεια', component: CategoriesComponent, data: {
-      url: 'γυναικεια', label: 'Γυνακεία',
+      url: 'γυναικεια', label: 'Γυναικεία',
       feed: '/assets/data/gynaikeia/gynaikeia-categories.json'
     },
     children: [
-      { path: 'παπουτσια', component: CategoriesComponent, data: { url: 'γυναικεια/παπουτσια', label: 'Παπούτσια' } },
-      { path: 'ρουχα', component: CategoriesComponent, data: { url: 'γυναικεια/ρουχα', label: 'Ρούχα' } },
+      {
+        path: 'παπουτσια', component: CategoriesComponent, data: {
+          url: 'γυναικεια/παπουτσια', label: 'Παπούτσια',
+          feed: '/assets/data/gynaikeia/papoutsia/gynaikeia-papoutsia-categories.json'
+        }
+      },
+      {
+        path: 'ρουχα', component: CategoriesComponent, data: {
+          url: 'γυναικεια/ρουχα', label: 'Ρούχα',
+          feed: '/assets/data/gynaikeia/rouxa/gynaikeia-rouxa-categories.json'
+        }
+      },
       { path: 'κοσμηματα', component: CategoriesComponent, data: { url: 'γυναικεια/κοσμηματα', label: 'Κοσμήματα' } }
     ]
   },
@@ -238,7 +248,8 @@ const routes: Routes = [
   },
 
 
-  { path: 'παιδικα', component: CategoriesComponent, data: { gender: 'παιδικα' } }
+  { path: 'παιδικα', component: CategoriesComponent, data: { gender: 'παιδικα' } },
+  { path: 'αναζητηση', component: CategoriesComponent }
 ];
 
 @NgModule({

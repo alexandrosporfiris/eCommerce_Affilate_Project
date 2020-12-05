@@ -22,6 +22,7 @@ export interface IProduct extends Document {
     size: string[];
     colour: string;
     images: string[];
+    imagesUrls: string[];
 }
 
 export const ProductSchema = new Schema<IProduct>({
@@ -77,9 +78,11 @@ export const ProductSchema = new Schema<IProduct>({
     images: [
         String,
     ],
+    imagesUrls: [
+        String,
+    ],
 }).index({
     product_name: 'text',
-    description: 'text',
     category: 'text',
     subcategory: 'text',
     mainCategory: 'text',

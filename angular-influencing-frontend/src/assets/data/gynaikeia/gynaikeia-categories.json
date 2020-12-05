@@ -1,16 +1,16 @@
 [
   {
-    "image": "/assets/images/gynaikeia/rouxa.jpg",
+    "image": "/assets/images/γυναικεια/ρουχα.jpg",
     "name": "Γυναικεία Pούχα",
     "url": "γυναικεια/ρουχα"
   },
   {
-    "image": "/assets/images/gynaikeia/papoutsia.jpg",
+    "image": "/assets/images/γυναικεια/παπουτσια.jpg",
     "name": "Γυναικεία Παπούτσια",
     "url": "γυναικεια/παπουτσια"
   },
   {
-    "image": "/assets/images/gynaikeia/kosmimata.jpg",
+    "image": "/assets/images/γυναικεια/κοσμηματα.jpg",
     "name": "Γυναικεία Κοσμήματα",
     "url": "γυναικεια/κοσμηματα"
   }
